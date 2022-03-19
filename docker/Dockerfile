@@ -1,8 +1,10 @@
 FROM registry.fedoraproject.org/fedora:latest
 
+#Install podman
 RUN dnf -y update; yum -y reinstall shadow-utils; \
 yum -y install podman fuse-overlayfs --exclude container-selinux; \
-rm -rf /var/cache /var/log/dnf* /var/log/yum.*
+rm -rf /var/cache /var/log/dnf* /var/log/yum.* \
+yum -y install wget git
 
 RUN useradd podman; \
 echo podman:10000:5000 > /etc/subuid; \
@@ -16,8 +18,6 @@ VOLUME /var/podman/.local/containers
 ADD https://raw.githubusercontent.com/containers/libpod/master/contrib/podmanimage/stable/containers.conf /etc/containers/containers.conf
 
 ADD https://raw.githubusercontent.com/containers/libpod/master/contrib/podmanimage/stable/podman-containers.conf /home/podman/.config/containers/containers.conf
-
-RUN yum -y install wget
 
 RUN sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo; \
