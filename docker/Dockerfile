@@ -3,7 +3,7 @@ FROM registry.fedoraproject.org/fedora:latest
 #Install podman
 RUN dnf -y update; yum -y reinstall shadow-utils; \
 yum -y install podman fuse-overlayfs --exclude container-selinux; \
-rm -rf /var/cache /var/log/dnf* /var/log/yum.* \
+rm -rf /var/cache /var/log/dnf* /var/log/yum.*; \
 yum -y install wget git
 
 RUN useradd podman; \
