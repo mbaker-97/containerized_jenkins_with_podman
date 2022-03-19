@@ -10,6 +10,8 @@ RUN useradd podman; \
 echo podman:10000:5000 > /etc/subuid; \
 echo podman:10000:5000 > /etc/subgid;
 
+RUN mkdir /jenkins
+
 #For rootfull containers
 VOLUME /var/lib/containers
 #For rootless containers
