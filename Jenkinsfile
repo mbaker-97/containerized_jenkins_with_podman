@@ -1,13 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage("Git Pull")
-        {
-            steps{
-                git branch: 'main', url: 'https://github.com/mbaker-97/containerized_jenkins_with_podman.git'
-                echo "Successful Pull"
-            }
-        } stage("Podman Build")
+        stage("Podman Build")
         {
             
             steps{
