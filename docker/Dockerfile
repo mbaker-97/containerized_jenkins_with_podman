@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:latest
+FROM docker.io/redhat/ubi8:8.5
 
 #Install podman 
 RUN dnf -y update; yum -y reinstall shadow-utils; \ yum -y install podman fuse-overlayfs --exclude container-selinux; \
